@@ -3,7 +3,6 @@ var connectMincer = require('connect-mincer'),
     path = require('path'),
     mincer;
 
-
 // Config for connect-mincer
 // See https://github.com/clarkdave/connect-mincer for more details
 mincer = new connectMincer({
@@ -16,10 +15,17 @@ mincer = new connectMincer({
 
 // Configure Stylus so it can import css files just like .styl files
 // Also allows the use of nib (mixin library for stylus)
+// See
 mincer.Mincer.StylusEngine.configure(function(style) {
   style.set('include css', true);
   style.use(nib());
 });
+
+// Uncomment the lines below to configure Jade or Coffee 
+// See http://nodeca.github.io/mincer for more details
+
+// mincer.Mincer.JadeEngine.configure({});
+// mincer.Mincer.CoffeeEngine.configure({});
 
 module.exports = {
  express: {
