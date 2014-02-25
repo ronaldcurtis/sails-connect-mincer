@@ -1,0 +1,1 @@
+foo = 'Connect Mincer Rocks'
