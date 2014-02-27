@@ -39,6 +39,7 @@ There are also some example less, stylus, sass, and coffeescript files that are 
 ---
 
 #### Asset helpers
+Several asset helper functions are available in your views and assets.
 - `<%- css('styles/file.css', {opts}) %>` Outputs a `<link>` tag pointing to the stylesheet. Extra object parameter for more element attributes, eg `<%- css('css/file.css', {'media': 'print'}) %>`
 - `<%- js('js/app.js', {opts}) %>` Outputs a `<script>` tag pointing to the js file. Extra object parameter for more element attributes.
 - `<%= asset_path('path/to/asset') %>` outputs a string referencing the asset.
@@ -47,8 +48,6 @@ The jade equivalent of the above:
 - `!= css('styles/file.css')`
 - `!= js('js/file.js')`
 - `#{asset_path('styles/file.css')}`
-
-See [connect-mincer](https://github.com/clarkdave/connect-mincer) for more details.
 
 ##### Referencing assets within stylesheets
 You will need to use the `asset_path` helper in stylesheets if you want to reference assets such as images and fonts. You will need to add the `.ejs` extension for scss, less, coffeescript etc.
@@ -68,5 +67,16 @@ body {
 
 See [connect-mincer](https://github.com/clarkdave/connect-mincer) for more details.
 
+---
+
+#### Using Directives
+You can use directives to require other files. See [mincer](https://github.com/nodeca/mincer) for more details. An example is provided in `assets/js/loader.js`:
+
+```
+//= require ./socket.io
+//= require ./sails.io
+//= require ./app
+//= require_tree ./foo
+```
 
 
