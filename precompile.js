@@ -3,22 +3,27 @@
   console.log('Precompiling...');
 
   var Mincer = require('mincer'),
+      csso = require('csso'),
+      uglify = require('uglify-js'),
       nib = require('nib'),
       mountPoint = '/assets',
       env;
 
   env = new Mincer.Environment('./');
 
-  // If you're using stylus, we must configure it
+  // Remove the below lines if you're not using Stylus
   Mincer.StylusEngine.configure(function(style) {
     style.set('include css', true)
     style.set('compress', true)
     style.use(nib());
   });
 
+  // Set compressors
+  env.jsCompressor = 'uglify';
+  env.cssCompressor = 'csso';
+
   env.appendPath('assets');
 
-  // Register any helpers we use
   env.registerHelper('asset_path', function(name, opts) {
     var asset = env.findAsset(name, opts);
     if (!asset){
@@ -34,6 +39,6 @@
       console.log(err);
       throw err;
     }
-    console.info('Finished precompile:');
+    console.info('Finished precompile.');
   });
 }());
