@@ -23,7 +23,7 @@ The advantages of using connect-mincer compared to sails's built-in asset manage
 Depploying for production requires an extra precompilation step compared to sails js:
 - `cd` into the directory
 - `npm install`
-- `grunt prod`
+- `grunt production`
 - Start the app
 
 ---
@@ -34,7 +34,7 @@ Sails Connect Mincer doesn't depart from sails in any major way, and at its core
 - Created `precompile.js` which precompiles the assets for production.
 - Updated `Gruntfile.js`. Simply now cleans the `.tmp` folder and runs the precompile script. Much cleaner.
 
-There are also some example less, stylus, sass, and coffeescript files that are being loaded in `views/layout.ejs'.
+There are also some example less, stylus, sass, and coffeescript files that are being loaded in `views/layout.ejs`.
 
 ---
 

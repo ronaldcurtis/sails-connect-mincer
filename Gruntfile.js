@@ -18,12 +18,22 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('prod', [
+  // Run this task before starting in production
+  grunt.registerTask('production', [
     'clean',
     'shell:precompile'
   ]);
 
+  // This is Sails's default task when launching the app in production.
+  // But Sails runs this task in a different order, and we need to
+  // precompile our assets before any middleware is run
+  // therefore we run grunt production manually instead
+  grunt.registerTask('prod', function() {
+    return;
+  });
+
+  // Nothing needs to happen in a dev environment :)
   grunt.registerTask('default', function() {
-    grunt.log('Grunt not required to do anything in a dev environment.');
+    return;
   });
 };

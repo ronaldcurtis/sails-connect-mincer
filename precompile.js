@@ -3,15 +3,13 @@
   console.log('Precompiling...');
 
   var Mincer = require('mincer'),
-      csso = require('csso'),
+      CleanCss = require('clean-css'),
       uglify = require('uglify-js'),
       nib = require('nib'),
       mountPoint = '/assets',
       env;
 
   env = new Mincer.Environment('./');
-
-  // Remove the below lines if you're not using Stylus
   Mincer.StylusEngine.configure(function(style) {
     style.set('include css', true)
     style.set('compress', true)
@@ -20,7 +18,13 @@
 
   // Set compressors
   env.jsCompressor = 'uglify';
-  env.cssCompressor = 'csso';
+  env.cssCompressor = function(context, data) {
+    var min = '';
+    if (data) {
+      min = new CleanCss().minify(data)
+    }
+    return min;
+  }
 
   env.appendPath('assets');
 
