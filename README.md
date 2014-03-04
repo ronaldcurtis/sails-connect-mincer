@@ -1,6 +1,6 @@
 # Sails Connect Mincer
 
-Sails-Connect-Mincer is simply Sails.js with a Ruby on Rails-like asset pipeline (using [connect-mincer](https://github.com/clarkdave/connect-mincer)). It supports everything [mincer](https://github.com/nodeca/mincer) supports: SCSS, LESS, Stylus, Jade, HAML, and EJS.
+Sails-Connect-Mincer is simply Sails.js with a Ruby on Rails-like asset pipeline (using [connect-mincer](https://github.com/clarkdave/connect-mincer)). It supports everything [mincer](https://github.com/nodeca/mincer) supports: Coffeescript, SCSS, LESS, Stylus, Jade, HAML, and EJS.
 
 #### Features
 The advantages of using connect-mincer compared to sails's built-in asset manager includes:
